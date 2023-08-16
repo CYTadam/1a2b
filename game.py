@@ -17,8 +17,29 @@ while guess!=ans:
 
     #1.使用者猜數字
     inputnum=input(f'第{it}次猜輸入4個不重覆且介於0~9的整數(i.e. 7895)\n')
-    for i in inputnum:
-        guess.append(int(i))
+    while True:
+        guess = []
+        time = 0
+        for i in inputnum:
+            guess.append(int(i))
+        for i in range(len(guess)):
+            for j in range(len(guess)):
+                if guess[i]==guess[j]:
+                    time+=1
+        if len(guess)!=4 and time!=len(guess):
+            print('輸入4個且不重覆!!!')
+            inputnum=input()
+            continue
+        if len(guess)!=4:
+            print('輸入4個!!!')
+            inputnum=input()
+            continue
+        if time!=4:
+            print('不重覆!!!')
+            inputnum=input()
+            continue
+        if len(guess)==4 and time==4:
+            break
 
     #2.程式判斷是否為答案
     for i in range(4):
